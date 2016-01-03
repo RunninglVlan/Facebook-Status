@@ -1,0 +1,25 @@
+{
+	"name":            "Facebook Status",
+	"version":         "1.0",
+	"manifest_version": 2,
+
+	"description": "Shows your Facebook status (New Friend Requests, Messages and Notifications) on a Speed Dial as well as some of the latest news from your news feed.",
+	"developer": {
+		"name": "RunninglVlan",
+		"url":  "https://github.com/RunninglVlan"
+	},
+	"icons": {
+		"64":  "img/icon_64.png",
+		"128": "img/icon_128.png"
+	},
+
+	"permissions": ["*://www.facebook.com/*", "speeddial"],
+	"speeddial": {
+		"title":     "Facebook Status",
+		"url":       "https://www.facebook.com/",
+		"size_mode": "adapt"
+	},
+	"background": {
+		"page": "speeddial.html"
+	}
+}
