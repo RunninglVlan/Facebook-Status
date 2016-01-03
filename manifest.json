@@ -1,6 +1,6 @@
 {
 	"name":            "Facebook Status",
-	"version":         "1.0",
+	"version":         "0.9",
 	"manifest_version": 2,
 
 	"description": "Shows your Facebook status (New Friend Requests, Messages and Notifications) on a Speed Dial as well as some of the latest news from your news feed.",
