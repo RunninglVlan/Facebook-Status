@@ -14,7 +14,6 @@
 chrome.browserAction.onClicked.addListener(function () {
 	chrome.tabs.query({ url: Constants.DESKTOP_URL + '*' }, function (tabs) {
 		if (tabs.length === 0) {
-			chrome.browserAction.get
 			var urlToOpen = Constants.DESKTOP_URL;
 			if (statuses.currentPath === Constants.REQUESTS_PATH) {
 				urlToOpen = "https://www.facebook.com/friends/requests/";
