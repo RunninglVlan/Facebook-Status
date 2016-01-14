@@ -3,7 +3,7 @@
 	"version":         "1.0",
 	"manifest_version": 2,
 
-	"description": "Shows your Facebook status (New Friend Requests, Messages and Notifications) on a toolbar.",
+	"description": "Shows your Facebook status (New Friend Requests, Messages and Notifications) on a toolbar. Perfect for those who don't want to keep Facebook open all the time.",
 	"developer": {
 		"name": "RunninglVlan",
 		"url":  "https://github.com/RunninglVlan"
