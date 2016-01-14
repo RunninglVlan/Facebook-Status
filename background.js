@@ -153,6 +153,6 @@ var statuses = new Statuses();
 window.addEventListener("load", function () {
 	statuses.fetch();
 	window.setInterval(function () {
-	  statuses.fetch();
+		statuses.fetch();
 	}, Constants.TIME_30S);
 }, false);
