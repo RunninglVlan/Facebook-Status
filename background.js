@@ -151,5 +151,7 @@ var statuses = new Statuses();
 
 window.addEventListener("load", function () {
 	statuses.fetch();
-	window.setInterval(statuses.fetch, Constants.TIME_30S);
+	window.setInterval(function () {
+		statuses.fetch();
+	}, Constants.TIME_30S);
 }, false);
