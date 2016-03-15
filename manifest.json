@@ -1,6 +1,6 @@
 {
 	"name":            "Facebook Status",
-	"version":         "1.0.1",
+	"version":         "1.1",
 	"manifest_version": 2,
 
 	"description": "Shows your Facebook status (New Friend Requests, Messages and Notifications) on a toolbar. Perfect for those who don't want to keep Facebook open all the time.",
