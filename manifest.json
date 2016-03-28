@@ -19,7 +19,7 @@
 	},
 
 	"background": {
-		"scripts": ["background.js"]
+		"scripts": ["js/Constants.js", "js/Statuses.js", "background.js"]
 	},
 	"permissions": ["*://m.facebook.com/*", "*://www.facebook.com/*", "tabs"]
 }
