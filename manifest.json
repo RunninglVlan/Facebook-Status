@@ -1,13 +1,13 @@
 {
 	"name":            "Facebook Status",
-	"version":         "1.1",
+	"version":         "1.2",
 	"manifest_version": 2,
 
 	"description": "Shows your Facebook status (New Friend Requests, Messages and Notifications) on a toolbar. No need to keep site open all the time.",
-	"developer": {
+	/*"developer": {
 		"name": "RunninglVlan",
 		"url":  "https://github.com/RunninglVlan"
-	},
+	},*/
 	"icons": {
 		"64":  "img/icon_64.png",
 		"128": "img/icon_128.png"

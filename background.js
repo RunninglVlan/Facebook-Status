@@ -2,15 +2,13 @@
 
 var statuses = new Statuses();
 
-window.addEventListener("load", function () {
+window.addEventListener("load", () => {
 	statuses.fetch();
-	window.setInterval(function () {
-		statuses.fetch();
-	}, Constants.TIME_30S);
+	window.setInterval(() => statuses.fetch(), Constants.TIME_30S);
 }, false);
 
-chrome.browserAction.onClicked.addListener(function () {
-	chrome.tabs.query({ url: Constants.DESKTOP_URL + '*' }, function (tabs) {
+chrome.browserAction.onClicked.addListener(() => {
+	chrome.tabs.query({ url: Constants.DESKTOP_URL + '*' }, tabs => {
 		if (tabs.length === 0) {
 			var urlToOpen = Constants.DESKTOP_URL;
 			if (statuses.currentPath === Constants.REQUESTS_PATH) {

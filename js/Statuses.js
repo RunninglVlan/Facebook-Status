@@ -24,7 +24,7 @@ function Statuses() {
 		if (arguments.length === 0) {
 			this.fetch(Constants.MOBILE_URL, parseMobile);
 		} else {
-			xhr.onload = function () {
+			xhr.onload = () => {
 				if (xhr.readyState === Constants.STATE_DONE && xhr.status === Constants.STATUS_OK) {
 					try {
 						callback(xhr.response);
@@ -37,17 +37,18 @@ function Statuses() {
 						}
 					}
 				}
-			}.bind(this);
+			};
 			xhr.open("GET", url);
 			xhr.send(null);
 		}
 	};
-	var parseMobile = function (response) {
-		requestsCount = response.querySelector("#requests_jewel").querySelector("._59tg").innerText;
-		messagesCount = response.querySelector("#messages_jewel").querySelector("._59tg").innerText;
-		notificationsCount = response.querySelector("#notifications_jewel").querySelector("._59tg").innerText;
+	var parseMobile = response => {
+		var COUNT_CLASS = "._59tg";
+		requestsCount = response.querySelector("#requests_jewel").querySelector(COUNT_CLASS).innerText;
+		messagesCount = response.querySelector("#messages_jewel").querySelector(COUNT_CLASS).innerText;
+		notificationsCount = response.querySelector("#notifications_jewel").querySelector(COUNT_CLASS).innerText;
 	};
-	var parseDesktop = function (response) {
+	var parseDesktop = response => {
 		try {
 			requestsCount = response.querySelector("#requestsCountValue").innerText;
 			messagesCount = response.querySelector("#mercurymessagesCountValue").innerText;
@@ -83,9 +84,7 @@ function Statuses() {
 				updateIconArray[0]();
 			} else {
 				updateIcons();
-				intervalID = window.setInterval(function () {
-					updateIcons();
-				}, Constants.TIME_1S * 5);
+				intervalID = window.setInterval(() => updateIcons(), Constants.TIME_1S * 5);
 			}
 		} else {
 			chrome.browserAction.setIcon({ path: imagePath });
@@ -93,27 +92,21 @@ function Statuses() {
 			this.currentPath = imagePath;
 		}
 	}.bind(this);
-	var updateRequestsIcon = function () {
+	var updateRequestsIcon = () => {
 		updateIcon(Constants.REQUESTS_PATH, requestsCount);
 	};
-	var updateMessagesIcon = function () {
+	var updateMessagesIcon = () => {
 		updateIcon(Constants.MESSAGES_PATH, messagesCount);
 	};
-	var updateNotificationsIcon = function () {
+	var updateNotificationsIcon = () => {
 		updateIcon(Constants.NOTIFICATIONS_PATH, notificationsCount);
 	};
-	var updateIcons = function () {
+	var updateIcons = () => {
 		var nextFunction = updateIconArray.shift();
 		nextFunction();
 		updateIconArray.push(nextFunction);
 	};
-	var newRequestsExist = function () {
-		return requestsCount > 0;
-	};
-	var newMessagesExist = function () {
-		return messagesCount > 0;
-	};
-	var newNotificationsExist = function () {
-		return notificationsCount > 0;
-	};
+	var newRequestsExist      = () => requestsCount > 0;
+	var newMessagesExist      = () => messagesCount > 0;
+	var newNotificationsExist = () => notificationsCount > 0;
 }
