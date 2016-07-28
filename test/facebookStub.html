@@ -7,7 +7,7 @@
 	Add "http://localhost:8080/test/facebookStub.html" to manifest permissions
 	Update URL constants:
 	MOBILE_URL = this.DESKTOP_URL = "http://localhost:8080/test/facebookStub.html";
-	Make #mobile/#desktop throw Errors to test all states. Update counts -->
+	Make #mobile/#desktop/#login_form throw Errors to test all states. Update counts -->
 <body>
 	<div id="mobile">
 		<div id="requests_jewel">
@@ -26,5 +26,20 @@
 		<span class="_51lp hidden_elem _3z_5 _5ugh" id="mercurymessagesCountValue">5</span>
 		<span class="_51lp hidden_elem _3z_5 _5ugh" id="notificationsCountValue">6</span>
 	</div>
+
+	<form id="login_form">
+		<input type="hidden" name="lsd" value="AVpQmEzx" autocomplete="off">
+		<table cellspacing="0" role="presentation">
+			<tr>
+				<td><input type="email" class="inputtext" name="email" id="email" value="" tabindex="1"></td>
+				<td><input type="password" class="inputtext" name="pass" id="pass" tabindex="2"></td>
+				<td>
+					<label class="uiButton uiButtonConfirm" id="loginbutton" for="u_0_q">
+						<input value="Log In" tabindex="4" type="submit" id="u_0_q">
+					</label>
+				</td>
+			</tr>
+		</table>
+	</form>
 </body>
 </html>
