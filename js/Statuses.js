@@ -13,7 +13,7 @@
 	var xhr = new XMLHttpRequest();
 	xhr.timeout = 5000;
 	xhr.responseType = "document";
-	var intervalID;
+	var iconsUpdateIntervalID;
 	var updateIconArray = [];
 	var currentPath = DEFAULT_PATH;
 
@@ -24,7 +24,7 @@
 	 * If user is logged in, there's an unexpected error.
 	 * XMLHttpRequest is used instead of Fetch API as latter doesn't return necessary data in response.
 	 */
-	this.fetch = function (url, callback) {
+	this.fetch = function (url, parseCallback) {
 		requestsCount = messagesCount = notificationsCount = 0;
 		if (arguments.length === 0) {
 			this.fetch(MOBILE_URL, parseMobile);
@@ -32,8 +32,8 @@
 			xhr.onload = () => {
 				if (xhr.readyState === STATE_DONE && xhr.status === STATUS_OK) {
 					try {
-						callback(xhr.response);
-						window.clearInterval(intervalID);
+						window.clearInterval(iconsUpdateIntervalID);
+						parseCallback(xhr.response);
 						updateIconArray = [];
 						updateIcon();
 					} catch (e) {
@@ -61,6 +61,7 @@
 			notificationsCount = response.querySelector("#notificationsCountValue").innerText;
 		} catch (e) {
 			chrome.browserAction.setIcon({ path: ERROR_PATH });
+			currentPath = ERROR_PATH;
 			chrome.browserAction.setBadgeText({ text: '!' });
 			if (response.querySelector("#login_form")) {
 				chrome.browserAction.setTitle({ title: EXTENSION_NAME + ": Login to Facebook first" });
@@ -90,9 +91,9 @@
 				updateIconArray[0]();
 			} else {
 				updateIcons();
-				intervalID = window.setInterval(() => updateIcons(), ICONS_UPDATE_TIME_MS);
+				iconsUpdateIntervalID = window.setInterval(() => updateIcons(), ICONS_UPDATE_TIME_MS);
 			}
-		} else {
+		} else if (count !== 0) {
 			chrome.browserAction.setIcon({ path: imagePath });
 			chrome.browserAction.setBadgeText({ text: count.toString() });
 			currentPath = imagePath;
