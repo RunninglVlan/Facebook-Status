@@ -17,6 +17,8 @@
 	var updateIconArray = [];
 	var currentPath = DEFAULT_PATH;
 
+	chrome.browserAction.setBadgeBackgroundColor({ color: "#fa3e3e" });
+
 	/**
 	 * First tries to select statuses from Mobile site as it's most lightweight.
 	 * If it'll fail, tries to select statuses from Desktop site.
@@ -63,11 +65,11 @@
 			chrome.browserAction.setIcon({ path: ERROR_PATH });
 			currentPath = ERROR_PATH;
 			chrome.browserAction.setBadgeText({ text: '!' });
+			var errorMessage = "Unexpected error";
 			if (response.querySelector("#login_form")) {
-				chrome.browserAction.setTitle({ title: EXTENSION_NAME + ": Login to Facebook first" });
-			} else {
-				chrome.browserAction.setTitle({ title: EXTENSION_NAME + ": Unexpected error" });
+				errorMessage = "Login to Facebook first";
 			}
+			chrome.browserAction.setTitle({ title: EXTENSION_NAME + ':' + errorMessage });
 			// Rethrowing so that updateIcon wouldn't be called
 			e.desktop = true;
 			throw e;
