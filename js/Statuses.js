@@ -17,7 +17,7 @@
 	var updateIconArray = [];
 	var currentPath = DEFAULT_PATH;
 
-	chrome.browserAction.setBadgeBackgroundColor({ color: "#fa3e3e" });
+	chrome.browserAction.setBadgeBackgroundColor({ color: [250, 62, 62, 230] });
 
 	/**
 	 * First tries to select statuses from Mobile site as it's most lightweight.
