@@ -5,7 +5,7 @@
 	Use some application server, e.g. Tomcat, Mongoose
 	Make this file available through "http://localhost:8080/test/facebookStub.html"
 	Add "http://localhost:8080/test/facebookStub.html" to manifest permissions
-	Update URL constants:
+	Update URL constants in Fetcher:
 	MOBILE_URL = this.DESKTOP_URL = "http://localhost:8080/test/facebookStub.html";
 	Make #mobile/#desktop/#login_form throw Errors to test all states. Update counts -->
 <body>
@@ -28,14 +28,17 @@
 	</div>
 
 	<form id="login_form">
-		<input type="hidden" name="lsd" value="AVpQmEzx" autocomplete="off">
 		<table cellspacing="0" role="presentation">
 			<tr>
-				<td><input type="email" class="inputtext" name="email" id="email" value="" tabindex="1"></td>
-				<td><input type="password" class="inputtext" name="pass" id="pass" tabindex="2"></td>
+				<td class="html7magic"><label for="email">Email or Phone</label></td>
+				<td class="html7magic"><label for="pass">Password</label></td>
+			</tr>
+			<tr>
+				<td><input type="email" class="inputtext" name="email" id="email" value="" tabindex="1" /></td>
+				<td><input type="password" class="inputtext" name="pass" id="pass" tabindex="2" /></td>
 				<td>
 					<label class="uiButton uiButtonConfirm" id="loginbutton" for="u_0_q">
-						<input value="Log In" tabindex="4" type="submit" id="u_0_q">
+						<input value="Log In" tabindex="4" type="submit" id="u_0_q" />
 					</label>
 				</td>
 			</tr>

@@ -19,7 +19,7 @@
 	},
 
 	"background": {
-		"scripts": ["js/Statuses.js", "background.js"]
+		"scripts": ["js/Statuses.js", "js/Parser.js", "js/IconUpdater.js", "js/Fetcher.js", "js/Presenter.js", "background.js"]
 	},
 	"permissions": ["*://m.facebook.com/*", "*://www.facebook.com/*", "tabs"]
 }
