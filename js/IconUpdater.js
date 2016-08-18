@@ -9,7 +9,7 @@ function IconUpdater(p, s) {
 	var updateIconArray;
 
 	this.clearTimer = () => window.clearInterval(iconsUpdateIntervalID);
-	this.updateIcons = function () {
+	this.updateIcons = () => {
 		updateIconArray = [];
 		presenter.resetTitle();
 		if (statuses.getRequestsCount()) {

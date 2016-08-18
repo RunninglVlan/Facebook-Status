@@ -31,9 +31,14 @@
 	this.isNotificationsIconShown  = () => currentPath === NOTIFICATIONS_PATH;
 
 	this.resetIcon = () => changeIcon(DEFAULT_PATH, '');
-	this.changeToRequestsIcon = count => changeIcon(REQUESTS_PATH, count);
-	this.changeToMessagesIcon = count => changeIcon(MESSAGES_PATH, count);
-	this.changeToNotificationsIcon = count => changeIcon(NOTIFICATIONS_PATH, count);
+	this.changeToRequestsIcon = count => changeIconWithCount(REQUESTS_PATH, count);
+	this.changeToMessagesIcon = count => changeIconWithCount(MESSAGES_PATH, count);
+	this.changeToNotificationsIcon = count => changeIconWithCount(NOTIFICATIONS_PATH, count);
+	var changeIconWithCount = (imagePath, count) => {
+		if (count) {
+			changeIcon(imagePath, count);
+		}
+	};
 	var changeIcon = (imagePath, badgeText) => {
 		browserAction.setIcon({ path: imagePath });
 		browserAction.setBadgeText({ text: badgeText.toString() });

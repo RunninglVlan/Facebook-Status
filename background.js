@@ -3,7 +3,7 @@
 var fetcher, presenter;
 
 window.addEventListener("load", () => {
-	var UPDATE_TIME_MS = 1000 * 30 - 1;
+	var UPDATE_TIME_MS = 1000 * 30;
 
 	var statuses = new Statuses();
 	presenter = new Presenter(chrome.browserAction);
