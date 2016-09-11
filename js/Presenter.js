@@ -2,12 +2,17 @@
 	var browserAction = bA;
 
 	var EXTENSION_NAME = "Facebook Status";
-	var DEFAULT_PATH = "img/default.png", ERROR_PATH = "img/error.png";
-	var REQUESTS_PATH      = "img/requests.png";
-	var MESSAGES_PATH      = "img/messages.png";
-	var NOTIFICATIONS_PATH = "img/notifications.png";
+	var BROWSER_ACTION_PATH = "img/browserAction/";
+	var FILE_EXTENSION = ".png";
+	var Icons = {
+		DEFAULT: "default",
+		ERROR:   "error",
+		REQUESTS:      "requests",
+		MESSAGES:      "messages",
+		NOTIFICATIONS: "notifications"
+	};
 
-	var currentPath = DEFAULT_PATH;
+	var currentIcon = Icons.DEFAULT;
 
 	browserAction.setBadgeBackgroundColor({ color: [250, 62, 62, 230] });
 
@@ -17,7 +22,7 @@
 	};
 	this.loginError = () => error("Login to Facebook first");
 	var error = message => {
-		changeIcon(ERROR_PATH, '!');
+		changeIcon(Icons.ERROR, '!');
 		changeTitle(message);
 	};
 
@@ -26,22 +31,31 @@
 		browserAction.setTitle({ title: EXTENSION_NAME + (message ? ': ' + message : '') });
 	};
 
-	this.isRequestsIconShown       = () => currentPath === REQUESTS_PATH;
-	this.isMessagesIconShown       = () => currentPath === MESSAGES_PATH;
-	this.isNotificationsIconShown  = () => currentPath === NOTIFICATIONS_PATH;
+	this.isRequestsIconShown       = () => currentIcon === Icons.REQUESTS;
+	this.isMessagesIconShown       = () => currentIcon === Icons.MESSAGES;
+	this.isNotificationsIconShown  = () => currentIcon === Icons.NOTIFICATIONS;
 
-	this.resetIcon = () => changeIcon(DEFAULT_PATH, '');
-	this.changeToRequestsIcon = count => changeIconWithCount(REQUESTS_PATH, count);
-	this.changeToMessagesIcon = count => changeIconWithCount(MESSAGES_PATH, count);
-	this.changeToNotificationsIcon = count => changeIconWithCount(NOTIFICATIONS_PATH, count);
-	var changeIconWithCount = (imagePath, count) => {
+	this.resetIcon = () => changeIcon(Icons.DEFAULT, '');
+	this.changeToRequestsIcon = count => changeIconWithCount(Icons.REQUESTS, count);
+	this.changeToMessagesIcon = count => changeIconWithCount(Icons.MESSAGES, count);
+	this.changeToNotificationsIcon = count => changeIconWithCount(Icons.NOTIFICATIONS, count);
+	var changeIconWithCount = (icon, count) => {
 		if (count) {
-			changeIcon(imagePath, count);
+			changeIcon(icon, count);
 		}
 	};
-	var changeIcon = (imagePath, badgeText) => {
-		browserAction.setIcon({ path: imagePath });
+	var changeIcon = (icon, badgeText) => {
+		browserAction.setIcon({ path: getPaths(icon) });
 		browserAction.setBadgeText({ text: badgeText.toString() });
-		currentPath = imagePath;
+		currentIcon = icon;
 	};
+	var getPaths = (name) => {
+		return {
+			16: getPath(name, 16),
+			32: getPath(name, 32),
+			19: getPath(name, 19),
+			38: getPath(name, 38)
+		}
+	};
+	var getPath = (name, pixels) => BROWSER_ACTION_PATH + name + pixels + FILE_EXTENSION;
 }

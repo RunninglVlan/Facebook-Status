@@ -9,12 +9,17 @@
 		"url":  "https://github.com/RunninglVlan"
 	},
 	"icons": {
-		"64":  "img/icon_64.png",
-		"128": "img/icon_128.png"
+		"64":  "img/icon64.png",
+		"128": "img/icon128.png"
 	},
 
 	"browser_action": {
-		"default_icon": "img/default.png",
+		"default_icon": {
+			"16": "img/browserAction/default16.png",
+			"32": "img/browserAction/default32.png",
+			"19": "img/browserAction/default19.png",
+			"38": "img/browserAction/default38.png"
+		},
 		"default_title": "Facebook Status"
 	},
 
