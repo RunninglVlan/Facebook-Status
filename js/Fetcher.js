@@ -4,7 +4,7 @@ function Fetcher(s, p, iU) {
 	var statuses = s, parser = p, iconUpdater = iU;
 
 	var STATE_DONE = 4, STATUS_OK  = 200;
-	var MOBILE_URL  = "https://m.facebook.com/";
+	var MOBILE_URL   = "https://m.facebook.com/";
 	this.DESKTOP_URL = "https://www.facebook.com/";
 
 	var xhr = new XMLHttpRequest();
