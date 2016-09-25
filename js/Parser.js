@@ -23,7 +23,7 @@ function Parser(s, p) {
 			if (isLoginPage(response)) {
 				presenter.loginError();
 			} else {
-				presenter.defaultError(e);
+				presenter.unexpectedError(e);
 			}
 			e.desktop = true;
 			throw e;

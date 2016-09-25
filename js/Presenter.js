@@ -16,7 +16,7 @@
 
 	browserAction.setBadgeBackgroundColor({ color: [250, 62, 62, 230] });
 
-	this.defaultError = (e) => {
+	this.unexpectedError = (e) => {
 		console.error(e);
 		error("Unexpected error, check Console for error message and stack trace");
 	};

@@ -20,11 +20,11 @@ chrome.browserAction.onClicked.addListener(() => {
 		if (tabs.length === 0) {
 			var urlToOpen = fetcher.DESKTOP_URL;
 			if (presenter.isRequestsIconShown()) {
-				urlToOpen = "https://www.facebook.com/friends/requests/";
+				urlToOpen += "friends/requests/";
 			} else if (presenter.isMessagesIconShown()) {
-				urlToOpen = "https://www.facebook.com/messages/";
+				urlToOpen += "messages/";
 			} else if (presenter.isNotificationsIconShown()) {
-				urlToOpen = "https://www.facebook.com/notifications/";
+				urlToOpen += "notifications/";
 			}
 			chrome.tabs.create({ url: urlToOpen });
 		} else {
