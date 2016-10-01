@@ -1,13 +1,13 @@
 ﻿// import Statuses.js, Parser.js, IconUpdater.js
 
 function Fetcher(s, p, iU) {
-	var statuses = s, parser = p, iconUpdater = iU;
+	const statuses = s, parser = p, iconUpdater = iU;
 
-	var STATE_DONE = 4, STATUS_OK  = 200;
-	var MOBILE_URL   = "https://m.facebook.com/";
+	const STATE_DONE = 4, STATUS_OK  = 200;
+	const MOBILE_URL = "https://m.facebook.com/";
 	this.DESKTOP_URL = "https://www.facebook.com/";
 
-	var xhr = new XMLHttpRequest();
+	const xhr = new XMLHttpRequest();
 	xhr.timeout = 5000;
 	xhr.responseType = "document";
 

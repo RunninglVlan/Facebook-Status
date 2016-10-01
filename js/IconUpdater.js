@@ -1,14 +1,14 @@
 ﻿// import Presenter.js, Statuses.js
 
 function IconUpdater(p, s) {
-	var presenter = p, statuses = s;
+	const presenter = p, statuses = s;
 
-	var ICONS_UPDATE_TIME_MS = 5000;
+	const ICONS_UPDATE_TIME_MS = 5000;
 
-	var iconsUpdateIntervalID;
-	var updateIconArray;
+	let iconsUpdateIntervalID;
+	let updateIconArray;
 
-	this.clearTimer = () => window.clearInterval(iconsUpdateIntervalID);
+	this.clearTimer  = () => window.clearInterval(iconsUpdateIntervalID);
 	this.updateIcons = () => {
 		updateIconArray = [];
 		presenter.resetTitle();
@@ -37,8 +37,8 @@ function IconUpdater(p, s) {
 		}
 	};
 
-	var nextIcon = () => {
-		var nextFunction = updateIconArray.shift();
+	const nextIcon = () => {
+		const nextFunction = updateIconArray.shift();
 		nextFunction();
 		updateIconArray.push(nextFunction);
 	};

@@ -1,14 +1,14 @@
 ﻿// import Statuses.js, Presenter.js
 
 function Parser(s, p) {
-	var statuses = s, presenter = p;
+	const statuses = s, presenter = p;
 
-	var counts = {
+	const counts = {
 		requests: 0, messages: 0, notifications: 0
 	};
 
 	this.parseMobile = response => {
-		var COUNT_CLASS = "._59tg";
+		const COUNT_CLASS = "._59tg";
 		counts.requests = response.querySelector("#requests_jewel").querySelector(COUNT_CLASS).innerText;
 		counts.messages = response.querySelector("#messages_jewel").querySelector(COUNT_CLASS).innerText;
 		counts.notifications = response.querySelector("#notifications_jewel").querySelector(COUNT_CLASS).innerText;
@@ -31,5 +31,5 @@ function Parser(s, p) {
 		statuses.setCounts(counts);
 	};
 
-	var isLoginPage = response => response.querySelector("#login_form");
+	const isLoginPage = response => response.querySelector("#login_form");
 }
