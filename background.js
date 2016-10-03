@@ -8,7 +8,7 @@ window.addEventListener("load", () => {
 	const statuses = new Statuses();
 	presenter = new Presenter(chrome.browserAction);
 	const parser = new Parser(statuses, presenter);
-	const iconUpdater = new IconUpdater(presenter, statuses);
+	const iconUpdater = new IconUpdater(statuses, presenter);
 	fetcher = new Fetcher(statuses, parser, iconUpdater);
 
 	fetcher.fetch();
@@ -16,9 +16,9 @@ window.addEventListener("load", () => {
 }, false);
 
 chrome.browserAction.onClicked.addListener(() => {
-	chrome.tabs.query({ url: fetcher.DESKTOP_URL + '*' }, tabs => {
+	chrome.tabs.query({ url: Fetcher.DESKTOP_URL + '*' }, tabs => {
 		if (tabs.length === 0) {
-			let urlToOpen = fetcher.DESKTOP_URL;
+			let urlToOpen = Fetcher.DESKTOP_URL;
 			if (presenter.isRequestsIconShown()) {
 				urlToOpen += "friends/requests/";
 			} else if (presenter.isMessagesIconShown()) {
