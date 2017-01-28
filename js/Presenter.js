@@ -58,20 +58,20 @@ const Presenter = (() => {
 		}
 	};
 	const changeIcon = (icon, badgeText) => {
-		browserAction.setIcon({ path: getPaths(icon) });
+		browserAction.setIcon({ path: paths(icon) });
 		browserAction.setBadgeText({ text: badgeText.toString() });
 		currentIcon = icon;
 	};
 
-	const getPaths = name => {
+	const paths = name => {
 		return {
-			16: getPath(name, 16),
-			32: getPath(name, 32),
-			19: getPath(name, 19),
-			38: getPath(name, 38)
+			16: path(name, 16),
+			32: path(name, 32),
+			19: path(name, 19),
+			38: path(name, 38)
 		}
 	};
-	const getPath = (name, pixels) => BROWSER_ACTION_PATH + name + pixels + FILE_EXTENSION;
+	const path = (name, pixels) => BROWSER_ACTION_PATH + name + pixels + FILE_EXTENSION;
 
 	return Presenter;
 })();

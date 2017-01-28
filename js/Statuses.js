@@ -16,8 +16,8 @@
 		resetCounts() {
 			counts.requests = counts.messages = counts.notifications = 0;
 		}
-		getRequestsCount()      { return Number(counts.requests); }
-		getMessagesCount()      { return Number(counts.messages); }
-		getNotificationsCount() { return Number(counts.notifications); }
+		requestsCount()      { return Number(counts.requests); }
+		messagesCount()      { return Number(counts.messages); }
+		notificationsCount() { return Number(counts.notifications); }
 	}
 })();

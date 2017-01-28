@@ -1,6 +1,6 @@
 ﻿// import Statuses.js, Presenter.js, Parser.js, IconUpdater.js, Fetcher.js
 
-let fetcher, presenter;
+let presenter;
 
 window.addEventListener("load", () => {
 	const UPDATE_TIME_MS = 1000 * 30;
@@ -9,7 +9,7 @@ window.addEventListener("load", () => {
 	presenter = new Presenter(chrome.browserAction);
 	const parser = new Parser(statuses, presenter);
 	const iconUpdater = new IconUpdater(statuses, presenter);
-	fetcher = new Fetcher(statuses, parser, iconUpdater);
+	const fetcher = new Fetcher(statuses, parser, iconUpdater);
 
 	fetcher.fetch();
 	window.setInterval(() => fetcher.fetch(), UPDATE_TIME_MS);

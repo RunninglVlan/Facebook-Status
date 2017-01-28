@@ -4,7 +4,7 @@ const IconUpdater = (() => {
 	const ICONS_UPDATE_TIME_MS = 5000;
 
 	let instance, statuses, presenter;
-	let iconsUpdateIntervalID, updateIconArray;
+	let iconsUpdateIntervalId, updateIconArray;
 
 	class IconUpdater {
 		constructor(s, p) {
@@ -16,23 +16,24 @@ const IconUpdater = (() => {
 			return instance;
 		}
 
-		clearTimer() { window.clearInterval(iconsUpdateIntervalID); }
+		clearTimer() { window.clearInterval(iconsUpdateIntervalId); }
+
 		updateIcons() {
 			updateIconArray = [];
 			presenter.resetTitle();
-			if (statuses.getRequestsCount()) {
+			if (statuses.requestsCount()) {
 				updateIconArray.push(() => {
-					presenter.changeToRequestsIcon(statuses.getRequestsCount());
+					presenter.changeToRequestsIcon(statuses.requestsCount());
 				});
 			}
-			if (statuses.getMessagesCount()) {
+			if (statuses.messagesCount()) {
 				updateIconArray.push(() => {
-					presenter.changeToMessagesIcon(statuses.getMessagesCount());
+					presenter.changeToMessagesIcon(statuses.messagesCount());
 				});
 			}
-			if (statuses.getNotificationsCount()) {
+			if (statuses.notificationsCount()) {
 				updateIconArray.push(() => {
-					presenter.changeToNotificationsIcon(statuses.getNotificationsCount());
+					presenter.changeToNotificationsIcon(statuses.notificationsCount());
 				});
 			}
 			if (updateIconArray.length === 0) {
@@ -41,7 +42,7 @@ const IconUpdater = (() => {
 				updateIconArray[0]();
 			} else {
 				nextIcon();
-				iconsUpdateIntervalID = window.setInterval(() => nextIcon(), ICONS_UPDATE_TIME_MS);
+				iconsUpdateIntervalId = window.setInterval(() => nextIcon(), ICONS_UPDATE_TIME_MS);
 			}
 		}
 	}
