@@ -29,7 +29,7 @@ const Parser = (() => {
 				counts.messages = response.querySelector('#mercurymessagesCountValue').innerText;
 				counts.notifications = response.querySelector('#notificationsCountValue').innerText;
 			} catch (e) {
-				if (isLoginPage(response)) {
+				if (response && isLoginPage(response)) {
 					presenter.loginError();
 				} else {
 					presenter.unexpectedError(e);
