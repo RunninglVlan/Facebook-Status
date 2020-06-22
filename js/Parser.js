@@ -17,17 +17,17 @@ const Parser = (() => {
 		}
 
 		parseMobile(response) {
-			const COUNT_CLASS = "._59tg";
-			counts.requests = response.querySelector("#requests_jewel").querySelector(COUNT_CLASS).innerText;
-			counts.messages = response.querySelector("#messages_jewel").querySelector(COUNT_CLASS).innerText;
-			counts.notifications = response.querySelector("#notifications_jewel").querySelector(COUNT_CLASS).innerText;
+			const COUNT_CLASS = '._59tg';
+			counts.requests = response.querySelector('#requests_jewel').querySelector(COUNT_CLASS).innerText;
+			counts.messages = response.querySelector('#messages_jewel').querySelector(COUNT_CLASS).innerText;
+			counts.notifications = response.querySelector('#notifications_jewel').querySelector(COUNT_CLASS).innerText;
 			statuses.setCounts(counts);
 		}
 		parseDesktop(response) {
 			try {
-				counts.requests = response.querySelector("#requestsCountValue").innerText;
-				counts.messages = response.querySelector("#mercurymessagesCountValue").innerText;
-				counts.notifications = response.querySelector("#notificationsCountValue").innerText;
+				counts.requests = response.querySelector('#requestsCountValue').innerText;
+				counts.messages = response.querySelector('#mercurymessagesCountValue').innerText;
+				counts.notifications = response.querySelector('#notificationsCountValue').innerText;
 			} catch (e) {
 				if (isLoginPage(response)) {
 					presenter.loginError();
@@ -41,7 +41,7 @@ const Parser = (() => {
 		}
 	}
 
-	const isLoginPage = response => response.querySelector("#login_form");
+	const isLoginPage = response => response.querySelector('#login_form');
 
 	return Parser;
 })();

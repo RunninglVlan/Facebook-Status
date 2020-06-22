@@ -2,7 +2,7 @@
 
 let presenter;
 
-window.addEventListener("load", () => {
+window.addEventListener('load', () => {
 	const UPDATE_TIME_MS = 1000 * 30;
 
 	const statuses = new Statuses();
@@ -20,11 +20,11 @@ chrome.browserAction.onClicked.addListener(() => {
 		if (tabs.length === 0) {
 			let urlToOpen = Fetcher.DESKTOP_URL;
 			if (presenter.isRequestsIconShown()) {
-				urlToOpen += "friends/requests/";
+				urlToOpen += 'friends/requests/';
 			} else if (presenter.isMessagesIconShown()) {
-				urlToOpen += "messages/";
+				urlToOpen += 'messages/';
 			} else if (presenter.isNotificationsIconShown()) {
-				urlToOpen += "notifications/";
+				urlToOpen += 'notifications/';
 			}
 			chrome.tabs.create({ url: urlToOpen });
 		} else {

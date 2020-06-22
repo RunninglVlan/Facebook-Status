@@ -1,15 +1,15 @@
 ﻿// import https://developer.chrome.com/extensions/browserAction
 
 const Presenter = (() => {
-	const EXTENSION_NAME = "Facebook Status";
-	const BROWSER_ACTION_PATH = "img/browserAction/";
-	const FILE_EXTENSION = ".png";
+	const EXTENSION_NAME = 'Facebook Status';
+	const BROWSER_ACTION_PATH = 'img/browserAction/';
+	const FILE_EXTENSION = '.png';
 	const Icons = {
-		DEFAULT: "default",
-		ERROR:   "error",
-		REQUESTS:      "requests",
-		MESSAGES:      "messages",
-		NOTIFICATIONS: "notifications"
+		DEFAULT: 'default',
+		ERROR: 'error',
+		REQUESTS: 'requests',
+		MESSAGES: 'messages',
+		NOTIFICATIONS: 'notifications'
 	};
 
 	let instance, browserAction, currentIcon;
@@ -27,14 +27,14 @@ const Presenter = (() => {
 
 		unexpectedError(e) {
 			console.error(e);
-			error("Unexpected error, check Console for error message and stack trace");
+			error('Unexpected error, check Console for error message and stack trace');
 		}
-		loginError() { error("Login to Facebook first"); }
+		loginError() { error('Login to Facebook first'); }
 
 		resetTitle() { changeTitle(); }
 
-		isRequestsIconShown()      { return currentIcon === Icons.REQUESTS; }
-		isMessagesIconShown()      { return currentIcon === Icons.MESSAGES; }
+		isRequestsIconShown() { return currentIcon === Icons.REQUESTS; }
+		isMessagesIconShown() { return currentIcon === Icons.MESSAGES; }
 		isNotificationsIconShown() { return currentIcon === Icons.NOTIFICATIONS; }
 
 		resetIcon() { changeIcon(Icons.DEFAULT, ''); }

@@ -2,15 +2,15 @@
 
 const Fetcher = (() => {
 	const STATE_DONE = 4, STATUS_OK = 200;
-	const MOBILE_URL = "https://m.facebook.com/";
+	const MOBILE_URL = 'https://m.facebook.com/';
 
 	let instance, statuses, parser, iconUpdater;
 	const xhr = new XMLHttpRequest();
 	xhr.timeout = 5000;
-	xhr.responseType = "document";
+	xhr.responseType = 'document';
 
 	return class {
-		static get DESKTOP_URL() { return "https://www.facebook.com/"; }
+		static get DESKTOP_URL() { return 'https://www.facebook.com/'; }
 
 		constructor(s, p, iU) {
 			if (!instance) {
@@ -44,7 +44,7 @@ const Fetcher = (() => {
 					}
 				}
 			};
-			xhr.open("GET", url);
+			xhr.open('GET', url);
 			xhr.send(null);
 		}
 	}

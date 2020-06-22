@@ -12,12 +12,12 @@
 			return instance;
 		}
 
-		setCounts(c)  { counts = c; }
+		setCounts(c) { counts = c; }
 		resetCounts() {
 			counts.requests = counts.messages = counts.notifications = 0;
 		}
-		requestsCount()      { return Number(counts.requests); }
-		messagesCount()      { return Number(counts.messages); }
+		requestsCount() { return Number(counts.requests); }
+		messagesCount() { return Number(counts.messages); }
 		notificationsCount() { return Number(counts.notifications); }
 	}
 })();
