@@ -12,7 +12,7 @@
 	Make #mobile/#desktop/#login_form throw Errors to test all states. Update counts -->
 
 <body>
-	<div id="mobile">
+	<div id="mobile_chromium">
 		<div id="requests_jewel">
 			<span class="_59tg" data-sigil="count">1</span>
 		</div>
@@ -24,10 +24,23 @@
 		</div>
 	</div>
 
+	<div id="mobile_firefox">
+		<!-- When there are no new messages / notifications / friend requests, there are no strong/span tags -->
+		<a accesskey="4" href="/messages" class="bh bi">
+			<strong class="bj">Messages<span aria-label="4 unread">(4)</span></strong>
+		</a>
+		<a accesskey="3" href="/notifications.php" class="bh bi">
+			<strong class="bj">Notifications<span aria-label="5 new">(5)</span></strong>
+		</a>
+		<a accesskey="2" href="/friends" class="bh bi">
+			<strong class="bj">Friends<span aria-label="6 new request">(6)</span></strong>
+		</a>
+	</div>
+
 	<div id="desktop">
-		<span class="_51lp hidden_elem _3z_5 _5ugh" id="requestsCountValue">4</span>
-		<span class="_51lp hidden_elem _3z_5 _5ugh" id="mercurymessagesCountValue">5</span>
-		<span class="_51lp hidden_elem _3z_5 _5ugh" id="notificationsCountValue">6</span>
+		<span class="_51lp hidden_elem _3z_5 _5ugh" id="requestsCountValue">7</span>
+		<span class="_51lp hidden_elem _3z_5 _5ugh" id="mercurymessagesCountValue">8</span>
+		<span class="_51lp hidden_elem _3z_5 _5ugh" id="notificationsCountValue">9</span>
 	</div>
 
 	<form id="login_form">
