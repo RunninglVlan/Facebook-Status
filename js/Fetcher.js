@@ -1,8 +1,8 @@
-// import Statuses.js, Parser.js, IconUpdater.js
+﻿// import Statuses.js, Parser.js, IconUpdater.js
 
 const Fetcher = (() => {
 	const STATE_DONE = 4, STATUS_OK = 200;
-	const MOBILE_URL = 'https://m.facebook.com/';
+	const MOBILE_URL = 'https://mbasic.facebook.com/';
 
 	let instance, statuses, parser, iconUpdater;
 	const xhr = new XMLHttpRequest();

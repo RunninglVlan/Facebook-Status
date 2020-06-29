@@ -31,7 +31,7 @@
 		]
 	},
 	"permissions": [
-		"*://m.facebook.com/*",
+		"*://mbasic.facebook.com/*",
 		"*://www.facebook.com/*",
 		"tabs"
 	]
