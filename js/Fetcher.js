@@ -1,4 +1,4 @@
-﻿// import Statuses.js, Parser.js, IconUpdater.js
+// import Statuses.js, Parser.js, IconUpdater.js
 
 const Fetcher = (() => {
 	const STATE_DONE = 4, STATUS_OK = 200;
@@ -39,6 +39,7 @@ const Fetcher = (() => {
 						iconUpdater.updateIcons();
 					} catch (e) {
 						if (!e.desktop) {
+						    console.log(e);
 							this.fetch(Fetcher.DESKTOP_URL, parser.parseDesktop);
 						}
 					}

@@ -50,7 +50,7 @@ const Parser = (() => {
 	};
 	const parseFirefoxMobile = response => {
 		const count = type => {
-			var found = response.querySelector(`.bh.bi[href*='/${type}']`).innerText.match(/\(([^)]+)\)/);
+			var found = response.querySelector(`nav a[href*='/${type}']`).innerText.match(/\(([^)]+)\)/);
 			return found ? found[1] : 0;
 		}
 		counts.requests = count('friends');
