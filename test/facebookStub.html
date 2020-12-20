@@ -9,57 +9,57 @@
 	Update URL constants in Fetcher:
 	const MOBILE_URL = 'http://localhost:8080/test/facebookStub.html';
 	static get DESKTOP_URL() { return MOBILE_URL; }
-	Make #mobile/#desktop/#login_form throw Errors to test all states. Update counts -->
+	Make #mobile*/#desktop/#login_form throw Errors to test all states. Update counts -->
 
 <body>
-	<div id="mobile_chromium">
-		<div id="requests_jewel">
-			<span class="_59tg" data-sigil="count">1</span>
-		</div>
-		<div id="messages_jewel">
-			<span class="_59tg" data-sigil="count">2</span>
-		</div>
-		<div id="notifications_jewel">
-			<span class="_59tg" data-sigil="count">3</span>
-		</div>
-	</div>
+<div id="mobile_chromium">
+    <div id="requests_jewel">
+        <span class="_59tg" data-sigil="count">1</span>
+    </div>
+    <div id="messages_jewel">
+        <span class="_59tg" data-sigil="count">2</span>
+    </div>
+    <div id="notifications_jewel">
+        <span class="_59tg" data-sigil="count">3</span>
+    </div>
+</div>
 
-	<div id="mobile_firefox">
-		<!-- When there are no new messages / notifications / friend requests, there are no strong/span tags -->
-		<a accesskey="4" href="/messages" class="bh bi">
-			<strong class="bj">Messages<span aria-label="4 unread">(4)</span></strong>
-		</a>
-		<a accesskey="3" href="/notifications.php" class="bh bi">
-			<strong class="bj">Notifications<span aria-label="5 new">(5)</span></strong>
-		</a>
-		<a accesskey="2" href="/friends" class="bh bi">
-			<strong class="bj">Friends<span aria-label="6 new request">(6)</span></strong>
-		</a>
-	</div>
+<div id="mobile_firefox">
+    <!-- When there are no new messages / notifications / friend requests, there are no strong/span tags -->
+    <a accesskey="4" href="/messages" class="bh bi">
+        <strong class="bj">Messages<span aria-label="4 unread">(4)</span></strong>
+    </a>
+    <a accesskey="3" href="/notifications.php" class="bh bi">
+        <strong class="bj">Notifications<span aria-label="5 new">(5)</span></strong>
+    </a>
+    <a accesskey="2" href="/friends" class="bh bi">
+        <strong class="bj">Friends<span aria-label="6 new request">(6)</span></strong>
+    </a>
+</div>
 
-	<div id="desktop">
-		<span class="_51lp hidden_elem _3z_5 _5ugh" id="requestsCountValue">7</span>
-		<span class="_51lp hidden_elem _3z_5 _5ugh" id="mercurymessagesCountValue">8</span>
-		<span class="_51lp hidden_elem _3z_5 _5ugh" id="notificationsCountValue">9</span>
-	</div>
+<div id="desktop">
+    <span class="_51lp hidden_elem _3z_5 _5ugh" id="requestsCountValue">7</span>
+    <span class="_51lp hidden_elem _3z_5 _5ugh" id="mercurymessagesCountValue">8</span>
+    <span class="_51lp hidden_elem _3z_5 _5ugh" id="notificationsCountValue">9</span>
+</div>
 
-	<form id="login_form">
-		<table cellspacing="0" role="presentation">
-			<tr>
-				<td class="html7magic"><label for="email">Email or Phone</label></td>
-				<td class="html7magic"><label for="pass">Password</label></td>
-			</tr>
-			<tr>
-				<td><input type="email" class="inputtext" name="email" id="email" value="" tabindex="1" /></td>
-				<td><input type="password" class="inputtext" name="pass" id="pass" tabindex="2" /></td>
-				<td>
-					<label class="uiButton uiButtonConfirm" id="loginbutton" for="u_0_q">
-						<input value="Log In" tabindex="4" type="submit" id="u_0_q" />
-					</label>
-				</td>
-			</tr>
-		</table>
-	</form>
+<form id="login_form">
+    <table cellspacing="0" role="presentation">
+        <tr>
+            <td class="html7magic"><label for="email">Email or Phone</label></td>
+            <td class="html7magic"><label for="pass">Password</label></td>
+        </tr>
+        <tr>
+            <td><input type="email" class="inputtext" name="email" id="email" value="" tabindex="1"/></td>
+            <td><input type="password" class="inputtext" name="pass" id="pass" tabindex="2"/></td>
+            <td>
+                <label class="uiButton uiButtonConfirm" id="loginbutton" for="u_0_q">
+                    <input value="Log In" tabindex="4" type="submit" id="u_0_q"/>
+                </label>
+            </td>
+        </tr>
+    </table>
+</form>
 </body>
 
 </html>

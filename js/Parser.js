@@ -23,7 +23,8 @@ const Parser = (() => {
 			statuses.setCounts(counts);
 
 			function count(type) {
-				var found = response.querySelector(`nav a[href*='/${type}']`).innerText.match(/\(([^)]+)\)/);
+				const insideParentheses = /\(([^)]+)\)/;
+				const found = response.querySelector(`nav a[href*='/${type}']`).innerText.match(insideParentheses);
 				return found ? found[1] : 0;
 			}
 		}
