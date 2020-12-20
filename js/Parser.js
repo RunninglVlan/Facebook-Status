@@ -18,7 +18,7 @@ const Parser = (() => {
 
 		parseMobile(response) {
 			counts.requests = count('friends');
-			counts.messages = count('messages');
+			counts.messages = 0;
 			counts.notifications = count('notifications');
 			statuses.setCounts(counts);
 
