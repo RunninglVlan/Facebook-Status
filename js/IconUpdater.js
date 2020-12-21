@@ -26,11 +26,6 @@ const IconUpdater = (() => {
 					presenter.changeToRequestsIcon(statuses.requestsCount());
 				});
 			}
-			if (statuses.messagesCount()) {
-				updateIconArray.push(() => {
-					presenter.changeToMessagesIcon(statuses.messagesCount());
-				});
-			}
 			if (statuses.notificationsCount()) {
 				updateIconArray.push(() => {
 					presenter.changeToNotificationsIcon(statuses.notificationsCount());

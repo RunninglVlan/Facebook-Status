@@ -1,8 +1,8 @@
 {
 	"name": "Facebook Status",
-	"version": "1.2.4",
+	"version": "1.2.5",
 	"manifest_version": 2,
-	"description": "Shows your Facebook status (New Friend Requests, Messages and Notifications) on a toolbar. No need to keep site open all the time.",
+	"description": "Shows your Facebook status (New Friend Requests and Notifications) on a toolbar. No need to keep site open all the time.",
 	"developer": {
 		"name": "RunninglVlan",
 		"url": "https://github.com/RunninglVlan"
@@ -32,7 +32,6 @@
 	},
 	"permissions": [
 		"*://mbasic.facebook.com/*",
-		"*://www.facebook.com/*",
 		"tabs"
 	]
 }

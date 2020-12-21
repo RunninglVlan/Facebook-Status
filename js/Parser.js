@@ -3,7 +3,7 @@
 const Parser = (() => {
 	let instance, statuses, presenter;
 	const counts = {
-		requests: 0, messages: 0, notifications: 0
+		requests: 0, notifications: 0
 	};
 
 	class Parser {
@@ -18,7 +18,6 @@ const Parser = (() => {
 
 		parseMobile(response) {
 			counts.requests = count('friends');
-			counts.messages = 0;
 			counts.notifications = count('notifications');
 			statuses.setCounts(counts);
 
@@ -31,7 +30,6 @@ const Parser = (() => {
 		parseDesktop(response) {
 			try {
 				counts.requests = response.querySelector('#requestsCountValue').innerText;
-				counts.messages = response.querySelector('#mercurymessagesCountValue').innerText;
 				counts.notifications = response.querySelector('#notificationsCountValue').innerText;
 			} catch (e) {
 				if (response && isLoginPage(response)) {

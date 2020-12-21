@@ -21,8 +21,6 @@ chrome.browserAction.onClicked.addListener(() => {
 			let urlToOpen = Fetcher.DESKTOP_URL;
 			if (presenter.isRequestsIconShown()) {
 				urlToOpen += 'friends/requests/';
-			} else if (presenter.isMessagesIconShown()) {
-				urlToOpen += 'messages/';
 			} else if (presenter.isNotificationsIconShown()) {
 				urlToOpen += 'notifications/';
 			}

@@ -8,7 +8,6 @@ const Presenter = (() => {
 		DEFAULT: 'default',
 		ERROR: 'error',
 		REQUESTS: 'requests',
-		MESSAGES: 'messages',
 		NOTIFICATIONS: 'notifications'
 	};
 
@@ -34,12 +33,10 @@ const Presenter = (() => {
 		resetTitle() { changeTitle(); }
 
 		isRequestsIconShown() { return currentIcon === Icons.REQUESTS; }
-		isMessagesIconShown() { return currentIcon === Icons.MESSAGES; }
 		isNotificationsIconShown() { return currentIcon === Icons.NOTIFICATIONS; }
 
 		resetIcon() { changeIcon(Icons.DEFAULT, ''); }
 		changeToRequestsIcon(count) { changeIconWithCount(Icons.REQUESTS, count); }
-		changeToMessagesIcon(count) { changeIconWithCount(Icons.MESSAGES, count); }
 		changeToNotificationsIcon(count) { changeIconWithCount(Icons.NOTIFICATIONS, count); }
 	}
 
