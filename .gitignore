@@ -1,2 +1,4 @@
 /.project
 /.idea
+/test/cors-web-server/node_modules
+/test/cors-web-server/package-lock.json
