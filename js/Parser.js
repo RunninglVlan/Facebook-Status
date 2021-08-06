@@ -16,34 +16,29 @@ const Parser = (() => {
 			return instance;
 		}
 
-		parseMobile(response) {
-			counts.requests = count('#requests_jewel');
-			counts.notifications = count('#notifications_jewel');
-			statuses.setCounts(counts);
-
-			function count(type) {
-				const COUNT_CLASS = '._59tg';
-				return response.querySelector(type).querySelector(COUNT_CLASS).innerText;
-			}
-		}
-		parseDesktop(response) {
+		parse(response) {
 			try {
-				counts.requests = response.querySelector('#requestsCountValue').innerText;
-				counts.notifications = response.querySelector('#notificationsCountValue').innerText;
+				counts.requests = count('#requests_jewel');
+				counts.notifications = count('#notifications_jewel');
 			} catch (e) {
 				if (response && isLoginPage(response)) {
 					presenter.loginError();
 				} else {
 					presenter.unexpectedError(e);
 				}
-				e.desktop = true;
-				throw e;
+				return false;
 			}
 			statuses.setCounts(counts);
+			return true;
+
+			function count(type) {
+				const COUNT_CLASS = '._59tg';
+				return response.querySelector(type).querySelector(COUNT_CLASS).innerText;
+			}
 		}
 	}
 
-	const isLoginPage = response => response.querySelector('#login_form');
+	const isLoginPage = response => response.querySelector('#signup-button');
 
 	return Parser;
 })();

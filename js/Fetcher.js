@@ -2,7 +2,7 @@
 
 const Fetcher = (() => {
 	const STATE_DONE = 4, STATUS_OK = 200;
-	const MOBILE_URL = 'https://m.facebook.com/';
+	const URL = 'https://m.facebook.com/';
 
 	let instance, statuses, parser, iconUpdater;
 	const xhr = new XMLHttpRequest();
@@ -10,8 +10,6 @@ const Fetcher = (() => {
 	xhr.responseType = 'document';
 
 	return class {
-		static get DESKTOP_URL() { return 'https://www.facebook.com/'; }
-
 		constructor(s, p, iU) {
 			if (!instance) {
 				instance = this;
@@ -29,19 +27,13 @@ const Fetcher = (() => {
 		 * If user is logged in, there's an unexpected error.
 		 * XMLHttpRequest is used instead of Fetch API as latter doesn't return necessary data in response.
 		 */
-		fetch(url = MOBILE_URL, parseCallback = parser.parseMobile) {
+		fetch(url = URL) {
 			statuses.resetCounts();
 			xhr.onload = () => {
 				if (xhr.readyState === STATE_DONE && xhr.status === STATUS_OK) {
-					try {
-						iconUpdater.clearTimer();
-						parseCallback(xhr.response);
+					iconUpdater.clearTimer();
+					if (parser.parse(xhr.response)) {
 						iconUpdater.updateIcons();
-					} catch (e) {
-						if (!e.desktop) {
-						    console.log(e);
-							this.fetch(Fetcher.DESKTOP_URL, parser.parseDesktop);
-						}
 					}
 				}
 			};
