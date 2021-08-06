@@ -2,7 +2,7 @@
 
 const Fetcher = (() => {
 	const STATE_DONE = 4, STATUS_OK = 200;
-	const MOBILE_URL = 'https://mbasic.facebook.com/';
+	const MOBILE_URL = 'https://m.facebook.com/';
 
 	let instance, statuses, parser, iconUpdater;
 	const xhr = new XMLHttpRequest();

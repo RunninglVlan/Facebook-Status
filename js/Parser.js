@@ -17,14 +17,13 @@ const Parser = (() => {
 		}
 
 		parseMobile(response) {
-			counts.requests = count('friends');
-			counts.notifications = count('notifications');
+			counts.requests = count('#requests_jewel');
+			counts.notifications = count('#notifications_jewel');
 			statuses.setCounts(counts);
 
 			function count(type) {
-				const insideParentheses = /\(([^)]+)\)/;
-				const found = response.querySelector(`nav a[href*='/${type}']`).innerText.match(insideParentheses);
-				return found ? found[1] : 0;
+				const COUNT_CLASS = '._59tg';
+				return response.querySelector(type).querySelector(COUNT_CLASS).innerText;
 			}
 		}
 		parseDesktop(response) {
