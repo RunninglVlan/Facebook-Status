@@ -19,6 +19,7 @@ const Presenter = (() => {
 				instance = this;
 				browserAction = bA;
 				browserAction.setBadgeBackgroundColor({ color: [250, 62, 62, 230] });
+				browserAction.setBadgeTextColor({ color: 'white' });
 				currentIcon = Icons.DEFAULT;
 			}
 			return instance;
