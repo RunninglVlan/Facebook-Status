@@ -32,8 +32,8 @@ const Parser = (() => {
             } else {
                 if (response && isLoginPage(response)) {
                     presenter.loginError();
-                } else {
-                    presenter.unexpectedError(e);
+                } else if (!isLoading(response)) {
+                    presenter.unexpectedError(response);
                 }
                 return false;
             }
@@ -94,6 +94,7 @@ const Parser = (() => {
     }
 
     const isLoginPage = response => response.match(/name="login"/);
+    const isLoading = response => !response.match(/role=/);
 
     return Parser;
 })();

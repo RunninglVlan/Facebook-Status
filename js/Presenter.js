@@ -27,9 +27,10 @@ const Presenter = (() => {
             return instance;
         }
 
-        unexpectedError(e) {
-            console.error(e);
-            error('Unexpected error, check Console for error message and stack trace');
+        unexpectedError(response) {
+            console.error("Response couldn't be parsed:");
+            console.log(response);
+            error("Unexpected error, check Console for error message");
         }
 
         loginError() { error('Login to Facebook first'); }
