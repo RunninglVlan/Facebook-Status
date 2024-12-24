@@ -16,7 +16,7 @@ const IconUpdater = (() => {
             return instance;
         }
 
-        clearTimer() { window.clearInterval(iconsUpdateIntervalId); }
+        clearTimer() { clearInterval(iconsUpdateIntervalId); }
 
         updateIcons() {
             updateIconArray = [];
@@ -37,7 +37,7 @@ const IconUpdater = (() => {
                 updateIconArray[0]();
             } else {
                 nextIcon();
-                iconsUpdateIntervalId = window.setInterval(() => nextIcon(), ICONS_UPDATE_TIME_MS);
+                iconsUpdateIntervalId = setInterval(() => nextIcon(), ICONS_UPDATE_TIME_MS);
             }
         }
     }

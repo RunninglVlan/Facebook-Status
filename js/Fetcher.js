@@ -1,13 +1,9 @@
 ﻿// import Statuses.js, Parser.js, IconUpdater.js
 
 const Fetcher = (() => {
-    const STATE_DONE = 4, STATUS_OK = 200;
-    const MOBILE_URL = 'https://m.facebook.com/';
+    const TIMEOUT = 5000;
 
     let instance, statuses, parser, iconUpdater;
-    const xhr = new XMLHttpRequest();
-    xhr.timeout = 5000;
-    xhr.responseType = 'document';
 
     return class {
         static get DESKTOP_URL() { return 'https://www.facebook.com/'; }
@@ -22,25 +18,58 @@ const Fetcher = (() => {
             return instance;
         }
 
-        /**
-         * First tries to select statuses from Mobile site as it's most lightweight.
-         * If it'll fail, tries to select statuses from Desktop site.
-         * If it'll fail too, user might be not logged in, this is checked too.
-         * If user is logged in, there's an unexpected error.
-         * XMLHttpRequest is used instead of Fetch API as latter doesn't return necessary data in response.
-         */
-        fetch(url = MOBILE_URL) {
+        fetch(url = Fetcher.DESKTOP_URL) {
             statuses.resetCounts();
-            xhr.onload = () => {
-                if (xhr.readyState === STATE_DONE && xhr.status === STATUS_OK) {
+            fetch(url, {
+                signal: AbortSignal.timeout(TIMEOUT),
+                headers: {
+                    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36',
+                    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+                    'accept-encoding': 'gzip, deflate, br, zstd',
+                    'accept-language': 'en-US,en;q=0.9'
+                }
+            })
+                .then(response => {
+                    const reader = response.body.getReader();
+                    const decoder = new TextDecoder('utf-8');
+                    let responseText = '';
+                    let divContent = '';
+                    let divFound = false;
+
+                    let readChunk = () => {
+                        return reader.read().then(({done, value}) => {
+                            if (done) {
+                                return divContent || responseText;
+                            }
+                            responseText += decoder.decode(value, {stream: true});
+                            if (!divFound) {
+                                const divStartIndex = responseText.indexOf('Account Controls and Settings');
+                                if (divStartIndex !== -1) {
+                                    divFound = true;
+                                    divContent = parser.extractDivContent(responseText, divStartIndex);
+                                    if (divContent) {
+                                        return divContent;
+                                    }
+                                }
+                            } else {
+                                divContent += responseText;
+                                const divEndIndex = parser.findDivEnd(divContent);
+                                if (divEndIndex !== -1) {
+                                    return divContent.substring(0, divEndIndex + 6);
+                                }
+                            }
+                            return readChunk();
+                        });
+                    }
+
+                    return readChunk();
+                })
+                .then(responseText => {
                     iconUpdater.clearTimer();
-                    if (parser.parse(xhr.response)) {
+                    if (parser.parse(responseText)) {
                         iconUpdater.updateIcons();
                     }
-                }
-            };
-            xhr.open('GET', url);
-            xhr.send(null);
+                })
         }
     }
 })();

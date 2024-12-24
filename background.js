@@ -1,21 +1,21 @@
-﻿// import Statuses.js, Presenter.js, Parser.js, IconUpdater.js, Fetcher.js
+﻿importScripts('js/Statuses.js', 'js/Presenter.js', 'js/Parser.js', 'js/IconUpdater.js', 'js/Fetcher.js');
 
 let presenter;
 
-window.addEventListener('load', () => {
+chrome.runtime.onInstalled.addListener(() => {
     const UPDATE_TIME_MS = 1000 * 30;
 
     const statuses = new Statuses();
-    presenter = new Presenter(chrome.browserAction);
+    presenter = new Presenter(chrome.action);
     const parser = new Parser(statuses, presenter);
     const iconUpdater = new IconUpdater(statuses, presenter);
     const fetcher = new Fetcher(statuses, parser, iconUpdater);
 
     fetcher.fetch();
-    window.setInterval(() => fetcher.fetch(), UPDATE_TIME_MS);
-}, false);
+    setInterval(() => fetcher.fetch(), UPDATE_TIME_MS);
+});
 
-chrome.browserAction.onClicked.addListener(() => {
+chrome.action.onClicked.addListener(() => {
     chrome.tabs.query({url: Fetcher.DESKTOP_URL + '*'}, tabs => {
         if (tabs.length === 0) {
             let urlToOpen = Fetcher.DESKTOP_URL;

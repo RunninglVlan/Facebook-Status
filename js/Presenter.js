@@ -1,4 +1,4 @@
-﻿// import https://developer.chrome.com/extensions/browserAction
+﻿// import https://developer.chrome.com/docs/extensions/reference/api/action
 
 const Presenter = (() => {
     const EXTENSION_NAME = 'Facebook Status';
@@ -11,15 +11,15 @@ const Presenter = (() => {
         NOTIFICATIONS: 'notifications'
     };
 
-    let instance, browserAction, currentIcon;
+    let instance, action, currentIcon;
 
     class Presenter {
-        constructor(bA) {
+        constructor(a) {
             if (!instance) {
                 instance = this;
-                browserAction = bA;
-                browserAction.setBadgeBackgroundColor({color: [250, 62, 62, 230]});
-                browserAction.setBadgeTextColor({color: 'white'});
+                action = a;
+                action.setBadgeBackgroundColor({color: [250, 62, 62, 230]});
+                action.setBadgeTextColor({color: 'white'});
                 currentIcon = Icons.DEFAULT;
             }
             return instance;
@@ -48,7 +48,7 @@ const Presenter = (() => {
     };
 
     const changeTitle = message => {
-        browserAction.setTitle({title: EXTENSION_NAME + (message ? `: ${message}` : '')});
+        action.setTitle({title: EXTENSION_NAME + (message ? `: ${message}` : '')});
     };
 
     const changeIconWithCount = (icon, count) => {
@@ -57,8 +57,8 @@ const Presenter = (() => {
         }
     };
     const changeIcon = (icon, badgeText) => {
-        browserAction.setIcon({path: paths(icon)});
-        browserAction.setBadgeText({text: badgeText.toString()});
+        action.setIcon({path: paths(icon)});
+        action.setBadgeText({text: badgeText.toString()});
         currentIcon = icon;
     };
 
