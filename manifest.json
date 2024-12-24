@@ -25,7 +25,9 @@
   },
   "permissions": [
     "tabs",
-    "activeTab"
+    "activeTab",
+    "alarms",
+    "storage"
   ],
   "host_permissions": [
     "*://www.facebook.com/*"

@@ -2,8 +2,8 @@
 
 let presenter;
 
-chrome.runtime.onInstalled.addListener(() => {
-    const UPDATE_TIME_MS = 1000 * 30;
+const initialize = () => {
+    const UPDATE_TIME_MIN = 0.5;
 
     const statuses = new Statuses();
     presenter = new Presenter(chrome.action);
@@ -11,13 +11,25 @@ chrome.runtime.onInstalled.addListener(() => {
     const iconUpdater = new IconUpdater(statuses, presenter);
     const fetcher = new Fetcher(statuses, parser, iconUpdater);
 
+    chrome.alarms.create('fetch', { periodInMinutes: UPDATE_TIME_MIN });
+
     fetcher.fetch();
-    setInterval(() => fetcher.fetch(), UPDATE_TIME_MS);
-});
+    chrome.alarms.onAlarm.addListener((alarm) => {
+        if (alarm.name === 'fetch') {
+            fetcher.fetch();
+        }
+    });
+}
+
+chrome.runtime.onInstalled.addListener(initialize);
+chrome.runtime.onStartup.addListener(initialize);
 
 chrome.action.onClicked.addListener(() => {
     chrome.tabs.query({url: Fetcher.DESKTOP_URL + '*'}, tabs => {
         if (tabs.length === 0) {
+            if (!presenter) {
+                presenter = new Presenter(chrome.action);
+            }
             let urlToOpen = Fetcher.DESKTOP_URL;
             if (presenter.isRequestsIconShown()) {
                 urlToOpen += 'friends/requests/';

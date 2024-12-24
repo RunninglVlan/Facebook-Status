@@ -20,7 +20,9 @@ const Presenter = (() => {
                 action = a;
                 action.setBadgeBackgroundColor({color: [250, 62, 62, 230]});
                 action.setBadgeTextColor({color: 'white'});
-                currentIcon = Icons.DEFAULT;
+                chrome.storage.local.get('currentIcon', result => {
+                    currentIcon = result.currentIcon || Icons.DEFAULT;
+                });
             }
             return instance;
         }
@@ -60,6 +62,7 @@ const Presenter = (() => {
         action.setIcon({path: paths(icon)});
         action.setBadgeText({text: badgeText.toString()});
         currentIcon = icon;
+        chrome.storage.local.set({ currentIcon });
     };
 
     const paths = name => {
