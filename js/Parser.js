@@ -93,8 +93,7 @@ const Parser = (() => {
         };
     }
 
-    // TODO: Update
-    const isLoginPage = response => response.querySelector('#signup-button');
+    const isLoginPage = response => response.match(/name="login"/);
 
     return Parser;
 })();
