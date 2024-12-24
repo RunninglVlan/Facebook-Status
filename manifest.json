@@ -1,37 +1,37 @@
 {
-	"name": "Facebook Status",
-	"version": "1.2.8",
-	"manifest_version": 2,
-	"description": "Shows your Facebook status (New Friend Requests and Notifications) on a toolbar. No need to keep site open all the time.",
-	"developer": {
-		"name": "RunninglVlan",
-		"url": "https://github.com/RunninglVlan"
-	},
-	"icons": {
-		"64": "img/icon64.png",
-		"128": "img/icon128.png"
-	},
-	"browser_action": {
-		"default_icon": {
-			"16": "img/browserAction/default16.png",
-			"32": "img/browserAction/default32.png",
-			"19": "img/browserAction/default19.png",
-			"38": "img/browserAction/default38.png"
-		},
-		"default_title": "Facebook Status"
-	},
-	"background": {
-		"scripts": [
-			"js/Statuses.js",
-			"js/Parser.js",
-			"js/IconUpdater.js",
-			"js/Fetcher.js",
-			"js/Presenter.js",
-			"background.js"
-		]
-	},
-	"permissions": [
-		"*://m.facebook.com/*",
-		"tabs"
-	]
+  "name": "Facebook Status",
+  "version": "1.2.8",
+  "manifest_version": 2,
+  "description": "Shows your Facebook status (New Friend Requests and Notifications) on a toolbar. No need to keep site open all the time.",
+  "developer": {
+    "name": "RunninglVlan",
+    "url": "https://github.com/RunninglVlan"
+  },
+  "icons": {
+    "64": "img/icon64.png",
+    "128": "img/icon128.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "img/browserAction/default16.png",
+      "32": "img/browserAction/default32.png",
+      "19": "img/browserAction/default19.png",
+      "38": "img/browserAction/default38.png"
+    },
+    "default_title": "Facebook Status"
+  },
+  "background": {
+    "scripts": [
+      "js/Statuses.js",
+      "js/Parser.js",
+      "js/IconUpdater.js",
+      "js/Fetcher.js",
+      "js/Presenter.js",
+      "background.js"
+    ]
+  },
+  "permissions": [
+    "*://m.facebook.com/*",
+    "tabs"
+  ]
 }
